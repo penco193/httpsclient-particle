@@ -322,9 +322,9 @@ int httpsClientConnection(unsigned char * requestContent, uint32 msg_len,
   int32 rc, len, transferred;
   g_httpRequestHdr = requestContent;
   Serial.print("FBT requestContent: "); // ADDED BY FBT
-  Serial.println(requestContent); // ADDED BY FBT
+  Serial.println(&requestContent); // ADDED BY FBT
   Serial.print("FBT messaget: "); // ADDED BY FBT
-  Serial.println(message); // ADDED BY FBT
+  Serial.println(&message); // ADDED BY FBT
   
   memset(&options, 0x0, sizeof(sslSessOpts_t));
   options.versionFlag = sessionFlag;
@@ -360,7 +360,7 @@ int httpsClientConnection(unsigned char * requestContent, uint32 msg_len,
 
  WRITE_MORE:
   Serial.println("FBT gbuf: "); // ADDED BY FBT
-  Serial.println(gbuf); // ADDED BY FBT
+  Serial.println(&gbuf); // ADDED BY FBT
   
   while ((len = matrixSslGetOutdata(ssl, &g_buf)) > 0) {
     transferred = client.write(g_buf, len);
